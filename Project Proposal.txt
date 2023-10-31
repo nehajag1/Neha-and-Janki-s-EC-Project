@@ -2,6 +2,9 @@
 The FM-index is an O(n*log(n)) algorithm (n being the length of the input text) that is used for efficient substring and text pattern matching. The algorithm works by making a suffix array, which holds the starting positions of all the letters in the string when sorted lexicographically. Then it finds the BWT of the text which rearranges the characters to allow for efficient substring searching.  
 
 
+Academic Reference: 
+We used this in order to understand the implementation of the FM-index alogrithm: https://www.geeksforgeeks.org/burrows-wheeler-data-transform-algorithm/
+and this to understand the BWT algorithm which is used within the FM-index algorithm: https://almob.biomedcentral.com/articles/10.1186/s13015-021-00204-6 
 Function I/O - 
 
 
