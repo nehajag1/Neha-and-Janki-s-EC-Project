@@ -1,0 +1,41 @@
+﻿Algorithm Summary - 
+The FM-index is an O(n*log(n)) algorithm (n being the length of the input text) that is used for efficient substring and text pattern matching. The algorithm works by making a suffix array, which holds the starting positions of all the letters in the string when sorted lexicographically. Then it finds the BWT of the text which rearranges the characters to allow for efficient substring searching.  
+
+
+Function I/O - 
+
+
+1. std::vector<int> buildSuffixArray(std::string& data) 
+@param data - the input string to be sorted
+@return the suffix array which lexicographically sorts all the suffixes of the string
+        
+This function will build the suffix, which is a lexicographically sorted array of all the suffixes of the string, which will later be utilized in the Burrows Wheeler Transform algorithm. Here we will be passing in a DNA sequence dataset.
+
+
+2. std::vector<char> buildBWT(const std::string& data, const std::vector<int>& suffixArray) 
+        @param text - the input text 
+        @param suffixArray - the suffix array built previously
+        @return the suffixArray after it undergoes the Burrows Wheeler transformations
+This function creates a BWT based on the suffixArray and the data of a DNA sequence. The char ‘$’ is appended at the end of the string. The input string undergoes all possible cyclic rotations based on its suffixArray value, and the ‘$’ makes sure that the algorithm knows when to stop making rotations. Then the rotations that are formed get sorted alphabetically. The last column, which contains the last element in each rotation, is outputted as a vector of chars. This column is considered the BWT because it has the best symbol clustering and with simply this string, the rest of the cyclic rotations can be recovered at any time.
+
+
+3. int countOccurences(const std::string& pattern)  
+        @param pattern - the specific substring we’re searching for 
+@returns the amount of times a particular substring is within the data string 
+This function uses the helper functions findFirstOccurance and findLastOccurnace to find the total number of times a given pattern exists within the data. 
+4. int findFirstOccurence(char letter, int start)   
+@param letter - the symbol to search for 
+@param start - index to start searching at 
+@returns the index of the first occurrence of the symbol
+
+
+This function looks for the first occurrence of a symbol in the bwt vector. 
+5. int findLastOccurence(char letter, int start)  
+@param letter - the symbol to search for
+@param start - index to start searching at
+@returns the index of the last occurrence of the symbol
+
+
+This function searches for the last occurrence of the symbol.
+Data Description - https://www.kaggle.com/datasets/nageshsingh/dna-sequence-dataset
+This dataset contains multiple DNA sequences that we will test our code with. We also use some manually created data so we could test the code on smaller DNA sequences to better debug.
