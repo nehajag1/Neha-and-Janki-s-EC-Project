@@ -1,4 +1,6 @@
 #include "human.txt"
+#include "chimpanzee.txt"
+#include "dog.txt"
 #include <sstream>
 
 TEST_CASE("Testing countOccurrences on Human Data", "[weight=5]")
